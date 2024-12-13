@@ -1,17 +1,39 @@
+import java.util.Objects;
 import java.util.Scanner;
+
+
 public class Calculatrice {
 
     private double number1;
     private double number2;
 
-    public void entrenumbers(){
+    public void entrenumbers(String cat){
 
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Entrez le premier nombre: ");
-            this.number1 = scanner.nextDouble();
-            System.out.print("Entrez le deuxième nombre: ");
-            this.number2 = scanner.nextDouble();
-                            }
+            if (Objects.equals(cat, "factorielle")){
+                System.out.print("Entrez le nombre: ");
+                this.number1 = scanner.nextDouble();
+             }
+
+            if (Objects.equals(cat, "racine_carree")){
+                System.out.print("Entrez le nombre: ");
+                this.number1 = scanner.nextDouble();
+            }
+            if (Objects.equals(cat, "puissance")){
+                System.out.print("Entrez le nombre: ");
+                this.number1 = scanner.nextDouble();
+                System.out.print("Entrez la puissance : ");
+                this.number1 = scanner.nextDouble();
+            }
+    }
+
+    public void entrenumbers(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Entrez le premier nombre: ");
+        this.number1 = scanner.nextDouble();
+        System.out.print("Entrez le deuxième nombre: ");
+        this.number2 = scanner.nextDouble();
+    }
 
     // l'addition
     public void addition() {
@@ -43,15 +65,13 @@ public class Calculatrice {
 
     // la puissance
         public void puissance() {
-            this.entrenumbers();
+            this.entrenumbers("puissance");
             System.out.println( "la puissance est : "+ Math.pow(this.number1, this.number2));
         }
 
     // racine carree
         public void  racineCarree() {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Entrez le nombre  ");
-            this.number1 = scanner.nextDouble();
+            this.entrenumbers("racine_carree");
             if (this.number1 < 0) {
                 System.out.println("Erreur: Racine carrée d'un nombre négatif.");
             }
@@ -61,9 +81,7 @@ public class Calculatrice {
         }
     // factorielle
         public void factorielle() {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Entrez le nombre: ");
-            this.number1 = scanner.nextDouble();
+          this.entrenumbers("factorielle");
 
             if (this.number1< 0) {
                 System.out.println("Erreur: Factorielle d'un nombre négatif.");
@@ -93,7 +111,7 @@ public class Calculatrice {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Calculatrice calc=new Calculatrice();
-
+        System.out.println(new Calculatrice());
         boolean continuer = true;
 
         while (continuer) {
